@@ -98,4 +98,12 @@ Assets/Scripts/
 - 敵AI（NavMesh / Behavior Tree）
 - New Input System への移行（PC + スマホ仮想パッド対応）
 - Visual Effect Graph による演出
+
+## 🧩 設計メモ
+
+- `CellBase` はテンプレートメソッドパターン。共通の移動/重力/攻撃クールタイムを基底に持ち、
+  `PerformAttack()` と `UseSkill()` のみを各細胞でオーバーライドする設計のため、
+  新しい細胞（好中球・キラーT細胞 など）を追加しやすい。
+- 入力処理は `PlayerManager` に集約されているため、New Input System への移行時は
+  この1クラスを差し替えるだけで済む。
 ```
